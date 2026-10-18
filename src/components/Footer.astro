@@ -1,0 +1,95 @@
+---
+import {
+	APP_STORE_URL,
+	GITHUB_APP_URL,
+	GITHUB_WEB_URL,
+	PLAY_STORE_URL,
+	SITE_TITLE,
+	TICKET_URL,
+} from '../consts';
+import { withBase } from '../utils';
+import Logo from './Logo.astro';
+
+const today = new Date();
+
+const columns = [
+	{
+		title: 'Le site',
+		links: [
+			{ href: withBase('/'), label: 'Accueil', external: false },
+			{ href: withBase('/blog/'), label: 'Blog', external: false },
+			{ href: withBase('/about/'), label: 'À propos', external: false },
+			{ href: withBase('/rss.xml'), label: 'Flux RSS', external: false },
+		],
+	},
+	{
+		title: 'Communauté',
+		links: [
+			{ href: GITHUB_APP_URL, label: 'Code source (Flutter)', external: true },
+			{ href: GITHUB_WEB_URL, label: 'Code source (site web)', external: true },
+			{ href: TICKET_URL, label: 'Proposer une idée', external: true },
+		],
+	},
+	{
+		title: 'Télécharger',
+		links: [
+			{ href: APP_STORE_URL, label: 'App Store (iOS)', external: true },
+			{ href: PLAY_STORE_URL, label: 'Play Store (Android)', external: true },
+		],
+	},
+];
+---
+
+<footer class="mt-24 border-t border-white/10 bg-[rgba(10,10,14,0.6)] backdrop-blur-xl">
+	<div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+		<div>
+			<div class="flex items-center gap-2.5">
+				<Logo size={34} />
+				<span class="text-lg font-bold text-white">{SITE_TITLE}</span>
+			</div>
+			<p class="mt-4 max-w-xs text-[15px] leading-relaxed text-white/60">
+				Le client open-source d'AmikOne : une rencontre libre, transparente et
+				portée par la communauté.
+			</p>
+			<div class="mt-5 flex gap-3">
+				<span class="chip">Open Source</span>
+				<span class="chip chip-active">Aucun tracking</span>
+			</div>
+		</div>
+
+		{
+			columns.map((column) => (
+				<div>
+					<h3 class="mb-4 text-sm font-bold uppercase tracking-[0.14em] text-white/50">
+						{column.title}
+					</h3>
+					<ul class="m-0 list-none space-y-2.5 p-0">
+						{column.links.map((link) => (
+							<li>
+								<a
+									href={link.href}
+									target={link.external ? '_blank' : undefined}
+									rel={link.external ? 'noopener noreferrer' : undefined}
+									class="text-[15px] text-white/70 no-underline transition hover:text-[color:var(--color-lavender)]"
+								>
+									{link.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			))
+		}
+	</div>
+
+	<div class="border-t border-white/10">
+		<div
+			class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-6 text-[14px] text-white/45 sm:flex-row"
+		>
+			<p class="m-0">
+				&copy; {today.getFullYear()} {SITE_TITLE} — Développé par la communauté AmikOne.
+			</p>
+			<p class="m-0">Projet expérimental, sans pub, sans algorithme caché.</p>
+		</div>
+	</div>
+</footer>

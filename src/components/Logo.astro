@@ -1,0 +1,35 @@
+---
+/**
+ * Logo Amikone : carré arrondi avec dégradé violet + "A" stylisé.
+ * `size` permet de piloter la hauteur du logo en pixels.
+ */
+interface Props {
+	size?: number;
+	class?: string;
+}
+
+const { size = 36, class: className = '' } = Astro.props;
+const id = `ami-grad-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<svg
+	class:list={[className]}
+	width={size}
+	height={size}
+	viewBox="0 0 64 64"
+	fill="none"
+	aria-hidden="true"
+	role="img"
+>
+	<defs>
+		<linearGradient id={id} x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#7C4DFF"></stop>
+			<stop offset="1" stop-color="#6200EE"></stop>
+		</linearGradient>
+	</defs>
+	<rect width="64" height="64" rx="18" fill={`url(#${id})`}></rect>
+	<path
+		d="M32 14.5c.62 0 1.18.37 1.43.94l14.6 33.2c.36.82-.24 1.74-1.11 1.74h-5.2c-.5 0-.96-.29-1.17-.74l-3.06-6.6a1.5 1.5 0 0 0-1.36-.87h-9.94c-.5 0-.97.31-1.16.79l-3.06 6.68c-.2.45-.66.74-1.16.74h-5.15c-.88 0-1.47-.94-1.08-1.72L30.57 15.44c.25-.57.81-.94 1.43-.94Zm0 13.13-4.6 11.05a1.5 1.5 0 0 0 1.39 2.11h9.22c.66 0 1.23.44 1.41 1.09l1.47 5.24-14.06-31.9 5.17 12.41Z"
+		fill="#fff"
+		opacity="0.95"></path>
+</svg>

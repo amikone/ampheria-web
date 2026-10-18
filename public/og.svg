@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+	<defs>
+		<linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#1E1E2C"/>
+			<stop offset="1" stop-color="#121212"/>
+		</linearGradient>
+		<linearGradient id="glow" x1="150" y1="0" x2="1050" y2="630" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#7C4DFF" stop-opacity="0.5"/>
+			<stop offset="1" stop-color="#7C4DFF" stop-opacity="0"/>
+		</linearGradient>
+		<linearGradient id="logo" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#7C4DFF"/>
+			<stop offset="1" stop-color="#6200EE"/>
+		</linearGradient>
+	</defs>
+	<rect width="1200" height="630" fill="url(#bg)"/>
+	<rect width="1200" height="630" fill="url(#glow)"/>
+
+	<!-- Logo -->
+	<rect x="90" y="255" width="120" height="120" rx="28" fill="url(#logo)"/>
+	<path
+		d="M150 292c2 0 3.9 1.2 4.8 3.1l32.4 73.5c1.2 2.7-.8 5.7-3.7 5.7h-11.5c-1.7 0-3.2-1-3.9-2.5l-6.7-14.6c-.9-1.9-2.9-3.1-5-3.1h-21.8c-1.7 0-3.2 1-3.9 2.5l-6.7 14.7c-.7 1.5-2.2 2.5-3.9 2.5h-11.4c-2.9 0-4.9-3.1-3.6-5.7L145 295.1c.9-1.9 2.9-3.1 5-3.1Zm0 29.2-10.1 24.3c-.8 1.9.3 4.1 2.3 4.1h20.2c1.1 0 2.1.8 2.4 1.9l3.2 11.5h-30.8L150 321.2Z"
+		fill="#fff"
+	/>
+
+	<!-- Titre -->
+	<text
+		x="250"
+		y="330"
+		font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+		font-size="58"
+		font-weight="700"
+		fill="#fff"
+		letter-spacing="-1"
+	>Amikone</text>
+
+	<!-- Sous-titre -->
+	<text
+		x="250"
+		y="390"
+		font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+		font-size="26"
+		font-weight="400"
+		fill="#BB86FC"
+	>Le client open-source pour une rencontre libre et transparente</text>
+
+	<!-- Badge -->
+	<rect x="250" y="420" width="180" height="36" rx="18" fill="rgba(124,77,255,0.2)" stroke="rgba(124,77,255,0.5)" stroke-width="1"/>
+	<text
+		x="270"
+		y="444"
+		font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+		font-size="16"
+		font-weight="600"
+		fill="#BB86FC"
+		letter-spacing="2"
+	>OPEN SOURCE</text>
+
+	<!-- Lien -->
+	<text
+		x="250"
+		y="530"
+		font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+		font-size="20"
+		font-weight="400"
+		fill="rgba(255,255,255,0.5)"
+	>amikone.github.io/ampheria-web</text>
+</svg>

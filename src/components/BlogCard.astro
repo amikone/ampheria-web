@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import { readingTime, withBase } from '../utils';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+	size?: 'md' | 'lg';
+}
+
+const { post, size = 'md' } = Astro.props;
+
+const { title, description, pubDate, tags } = post.data;
+
+// Dégradé déterministe à partir du titre, pour un visuel cohérent.
+const seed = [...title].reduce((acc, char) => acc + char.charCodeAt(0), 0);
+const hues = [262, 275, 248, 288, 258];
+const hue = hues[seed % hues.length];
+const initial = title.trim().charAt(0).toUpperCase();
+
+const href = withBase(`/blog/${post.id}/`);
+const isLarge = size === 'lg';
+---
+
+<article class:list={['glass-card group flex h-full flex-col overflow-hidden']}>
+	<a
+		href={href}
+		class="flex h-full flex-col no-underline transition"
+		aria-label={`Lire l'article : ${title}`}
+	>
+		<div
+			class:list={[
+				'relative flex items-center justify-center overflow-hidden',
+				isLarge ? 'h-48' : 'h-36',
+			]}
+			style={`background: radial-gradient(circle at 25% 15%, hsla(${hue}, 85%, 62%, 0.85), transparent 60%), radial-gradient(circle at 85% 90%, hsla(${hue + 20}, 90%, 45%, 0.7), transparent 55%), linear-gradient(140deg, #1e1e2c, #121212);`}
+		>
+			<span
+				class="text-[64px] font-bold leading-none text-white/15 transition group-hover:text-white/25"
+			>
+				{initial}
+			</span>
+			<span class="chip chip-active absolute bottom-3 left-4 text-[10px]!">
+				{tags[0] ?? 'Article'}
+			</span>
+		</div>
+
+		<div class="flex flex-1 flex-col gap-3 p-6">
+			<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-white/50">
+				<FormattedDate date={pubDate} />
+				<span aria-hidden="true">•</span>
+				<span>{readingTime(post.body)}</span>
+			</div>
+
+			<h3
+				class:list={[
+					'm-0 leading-tight text-white transition group-hover:text-[color:var(--color-lavender)]',
+					isLarge ? 'text-[1.6rem]' : 'text-[1.2rem]',
+				]}
+			>
+				{title}
+			</h3>
+
+			<p class="m-0 flex-1 text-[15px] leading-relaxed text-white/60">
+				{description}
+			</p>
+
+			<span class="mt-1 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[color:var(--color-lavender)]">
+				Lire l'article
+				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M5 12h13M13 6l6 6-6 6"></path>
+				</svg>
+			</span>
+		</div>
+	</a>
+</article>

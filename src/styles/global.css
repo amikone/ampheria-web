@@ -1,0 +1,434 @@
+/*
+	Design System : "Dark Premium Glassmorphism"
+	Replicating the visual identity of the Amikone Flutter application.
+ */
+
+@import 'tailwindcss';
+
+@theme {
+	/* Palette Amikone */
+	--color-ink: #121212; /* Scaffold background (noir profond) */
+	--color-surface: #1e1e2c; /* Surface / dégradé haut */
+	--color-card: #2a2a3e; /* Cartes pleines */
+
+	--color-accent: #7c4dff; /* Colors.deepPurpleAccent */
+	--color-accent-deep: #6200ee; /* Deep Purple (dégradé) */
+	--color-accent-soft: #673ab7; /* Colors.deepPurple */
+	--color-lavender: #bb86fc; /* High contrast light purple */
+	--color-danger: #ff5252; /* Colors.redAccent */
+
+	/* Blancs déclinés (tokens de texte) */
+	--color-onink: #ffffff;
+	--color-muted: rgba(255, 255, 255, 0.7);
+	--color-faint: rgba(255, 255, 255, 0.54);
+
+	/* Typographie */
+	--font-sans:
+		var(--font-atkinson), ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+		sans-serif;
+
+	/* Rayons & lueurs */
+	--radius-glass: 24px;
+	--radius-card: 20px;
+	--shadow-glow: 0 8px 40px rgba(124, 77, 255, 0.35);
+	--shadow-glow-strong: 0 14px 60px rgba(124, 77, 255, 0.5);
+	--shadow-card: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+@layer base {
+	:root {
+		color-scheme: dark;
+		scroll-behavior: smooth;
+	}
+
+	html {
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		min-height: 100vh;
+		font-family:
+			var(--font-atkinson),
+			ui-sans-serif,
+			system-ui,
+			-apple-system,
+			'Segoe UI',
+			sans-serif;
+		font-size: 17px;
+		line-height: 1.7;
+		color: #ffffff;
+		text-align: left;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		background-color: #121212;
+		background-image:
+			radial-gradient(
+				900px 520px at 85% -10%,
+				rgba(98, 0, 238, 0.45),
+				transparent 60%
+			),
+			radial-gradient(
+				700px 420px at 5% -5%,
+				rgba(124, 77, 255, 0.3),
+				transparent 55%
+			),
+			linear-gradient(180deg, #1e1e2c 0%, #121212 420px);
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+	}
+
+	::selection {
+		background: rgba(124, 77, 255, 0.45);
+		color: #fff;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: #fff;
+		line-height: 1.2;
+		font-weight: 700;
+		text-wrap: balance;
+	}
+
+	a {
+		color: var(--color-lavender);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	a:hover {
+		color: var(--color-accent);
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	/* Accessibilité */
+	.sr-only {
+		border: 0;
+		padding: 0;
+		margin: 0;
+		position: absolute !important;
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 3px;
+		border-radius: 4px;
+	}
+}
+
+/* ---------------------------------- Glass --------------------------------- */
+
+.glass {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+}
+
+.glass-card {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	border-radius: 24px;
+	transition:
+		transform 0.25s ease,
+		border-color 0.25s ease,
+		box-shadow 0.25s ease;
+}
+
+.glass-card:hover {
+	transform: translateY(-4px);
+	border-color: rgba(124, 77, 255, 0.5);
+	box-shadow: 0 14px 44px rgba(124, 77, 255, 0.22);
+}
+
+.glass-panel {
+	background: rgba(42, 42, 62, 0.55);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
+	border-radius: 24px;
+}
+
+/* --------------------------------- Boutons -------------------------------- */
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.6rem;
+	border-radius: 999px;
+	padding: 0.8rem 1.6rem;
+	font-weight: 700;
+	font-size: 1rem;
+	line-height: 1.2;
+	cursor: pointer;
+	border: 1px solid transparent;
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease,
+		background-color 0.2s ease,
+		border-color 0.2s ease;
+	text-decoration: none;
+}
+
+.btn:hover {
+	transform: translateY(-2px);
+	text-decoration: none;
+}
+
+.btn-primary {
+	background: linear-gradient(135deg, #7c4dff 0%, #6200ee 100%);
+	color: #fff;
+	box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+	color: #fff;
+	box-shadow: var(--shadow-glow-strong);
+}
+
+.btn-ghost {
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.14);
+	color: #fff;
+}
+
+.btn-ghost:hover {
+	color: #fff;
+	border-color: rgba(124, 77, 255, 0.6);
+	background: rgba(124, 77, 255, 0.14);
+}
+
+.btn-lg {
+	padding: 1rem 2rem;
+	font-size: 1.05rem;
+}
+
+/* ---------------------------------- Chips --------------------------------- */
+
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.3rem 0.85rem;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	background: rgba(255, 255, 255, 0.05);
+	color: rgba(255, 255, 255, 0.75);
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.chip-active {
+	border-color: rgba(124, 77, 255, 0.7);
+	background: rgba(124, 77, 255, 0.15);
+	color: var(--color-lavender);
+}
+
+/* --------------------------- Dégradé de texte ---------------------------- */
+
+.text-gradient {
+	background: linear-gradient(120deg, #ffffff 0%, #bb86fc 55%, #7c4dff 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+/* ------------------------------ Titres de section ------------------------ */
+
+.section-eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-lavender);
+}
+
+.section-title {
+	font-size: clamp(1.9rem, 4vw, 2.6rem);
+	margin: 0.75rem 0 0.75rem;
+	letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+	color: var(--color-muted);
+	max-width: 60ch;
+	margin: 0;
+}
+
+/* ---------------------------------- Prose --------------------------------- */
+
+.prose {
+	max-width: 720px;
+	margin: 0 auto;
+	color: rgba(255, 255, 255, 0.82);
+	font-size: 1.075rem;
+	line-height: 1.8;
+}
+
+.prose > * + * {
+	margin-top: 1.4rem;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+	color: #fff;
+	margin-top: 2.4rem;
+	margin-bottom: 0.9rem;
+	line-height: 1.25;
+	scroll-margin-top: 6rem;
+}
+
+.prose h2 {
+	font-size: 1.75rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.prose h3 {
+	font-size: 1.35rem;
+}
+
+.prose p {
+	margin: 0;
+}
+
+.prose strong {
+	color: #fff;
+	font-weight: 700;
+}
+
+.prose a {
+	color: var(--color-lavender);
+	text-decoration: underline;
+	text-underline-offset: 4px;
+	text-decoration-color: rgba(187, 134, 252, 0.45);
+}
+
+.prose a:hover {
+	color: var(--color-accent);
+	text-decoration-color: currentColor;
+}
+
+.prose ul,
+.prose ol {
+	padding-left: 1.4rem;
+	margin: 1.4rem 0;
+}
+
+.prose li {
+	margin-bottom: 0.6rem;
+}
+
+.prose li::marker {
+	color: var(--color-accent);
+}
+
+.prose blockquote {
+	margin: 1.8rem 0;
+	padding: 1rem 1.4rem;
+	border-left: 3px solid var(--color-accent);
+	border-radius: 0 16px 16px 0;
+	background: rgba(124, 77, 255, 0.08);
+	color: rgba(255, 255, 255, 0.78);
+	font-style: italic;
+}
+
+.prose hr {
+	border: none;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	margin: 2.5rem 0;
+}
+
+.prose code {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 0.9em;
+	padding: 0.15em 0.45em;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.09);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: var(--color-lavender);
+}
+
+.prose pre {
+	padding: 1.4rem;
+	border-radius: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: #16161f !important;
+	overflow-x: auto;
+	font-size: 0.92rem;
+	line-height: 1.65;
+}
+
+.prose pre code {
+	all: unset;
+	padding: 0;
+	border: none;
+	background: none;
+	color: inherit;
+	font-size: inherit;
+}
+
+.prose img {
+	display: block;
+	margin: 2rem auto;
+	border-radius: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: var(--shadow-card);
+}
+
+.prose table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1.8rem 0;
+	font-size: 0.97rem;
+}
+
+.prose th,
+.prose td {
+	padding: 0.75rem 0.9rem;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: left;
+}
+
+.prose thead {
+	background: rgba(124, 77, 255, 0.14);
+	color: #fff;
+}
+
+.prose tbody tr:nth-child(even) {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+/* -------------------------------- Responsive ------------------------------ */
+
+@media (max-width: 768px) {
+	body {
+		font-size: 16px;
+	}
+}
